@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>日期计算</title>
+
+</head>
+
+<body background="images/40858PIC4AX_1024.jpg">
+
+
+<b>计算两个日期之间差多少天</b>
+<br>
+
+　　<input size=6 id=SY2 value=2018>年
+<input size=3 id=SM2 value=7>月
+<input size=3 id=SD2 value=31>日（默认今天）
+<br>
+距　<input size=6 id=SY3  value=2019 >年
+<input size=3 id=SM3 value=1>月
+<input size=3 id=SD3 value=1>日
+<br>相差：
+<span id=result2></span>天
+<br>
+<input type=button value="计算" onclick="calb()">
+	
+<br>
+
+<br>
+
+<b>推算几天后的日期：</b>
+<br>
+　和
+<input size="8" id="SY" value="2018">年
+<input size="4" id="SM" value="07">月
+<input size="4" id="SD" value="31">日
+（缺省为今天）
+<br>相差
+<input size="8" id="decday" value="100">天
+（输入负数则往前计算）
+<br>是：
+<span id="result1"></span>
+<br>
+<input type=button value="计算" onclick="cala()">
+
+<br>
+
+</body>
+<script language="JavaScript">
+<!--
+	var hzWeek= new Array("日","一","二","三","四","五","六","日");
+
+//获取星期
+function cweekday(wday)
+{return hzWeek[wday];}
+function calb()
+{
+
+y2=document.getElementById("SY2").value;
+m2=document.getElementById("SM2").value;
+d2=document.getElementById("SD2").value;
+
+
+y3=document.getElementById("SY3").value;
+m3=document.getElementById("SM3").value;
+d3=document.getElementById("SD3").value;
+
+
+day2=new Date(y2,m2-1,d2);
+day3=new Date(y3,m3-1,d3);
+
+document.getElementById("result2").innerHTML=(day3-day2)/86400000;
+}
+function cala()
+{
+y=document.getElementById("SY").value;
+m=document.getElementById("SM").value;
+d=document.getElementById("SD").value;
+ddd=document.getElementById("decday").value;
+
+ttt=new Date(y,m-1,d).getTime()+ddd*24000*3600;
+
+theday=new Date();
+theday.setTime(ttt);
+
+document.getElementById("result1").innerHTML=theday.getFullYear()+"年"+(1+theday.getMonth())+"月"+theday.getDate()+"日"+"星期"+cweekday(theday.getDay());
+
+
+}
+// -->
+</script>
+	
+</html>
